@@ -1,13 +1,11 @@
 let globalCounter = 1;
+const taskButton = document.getElementById('add-task-btn');
+const todoList = document.querySelector('.todo-list');
+const taskInput = document.getElementById('task-input');
 
-function addTask() {
-    const taskInput = document.getElementById('task-input');
-    const taskButton = document.getElementById('add-task-btn');
-    const todoList = document.querySelector('.todo-list');
-
-    taskButton.addEventListener('click', (event) => {
-        const taskText = taskInput.value.trim();
-        if (taskText !== '') {
+function createTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
             const listItem = document.createElement('li');
             listItem.textContent = taskText;
             listItem.id = `task-item-${globalCounter}`;
@@ -28,6 +26,17 @@ function addTask() {
             taskInput.value = '';
             globalCounter++;
         }
+}
+
+function addTask() {
+    taskButton.addEventListener('click', (event) => {
+        createTask();
+    });
+
+    taskInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            createTask();
+        }
     });
 
     todoList.addEventListener('click', (event) => {
@@ -46,3 +55,4 @@ function addTask() {
 }
 
 addTask();
+createTask();
