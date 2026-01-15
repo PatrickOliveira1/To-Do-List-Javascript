@@ -54,5 +54,16 @@ function addTask() {
     });
 }
 
+function saveTasks() {
+    let tasks = [];
+    const listItems = todoList.querySelectorAll('li');
+    listItems.forEach((item) => {
+        const taskText = item.firstChild.textContent;
+        const checked = item.querySelector('input.task').checked;
+        tasks.push ({ text: taskText, completed: checked });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
 addTask();
 createTask();
