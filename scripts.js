@@ -39,6 +39,7 @@ function addTask() {
         if (event.key === 'Enter') {
             createTask();
             saveTasks();
+            emptyList();
         }
     });
 
