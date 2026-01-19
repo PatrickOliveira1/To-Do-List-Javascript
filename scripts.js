@@ -2,6 +2,7 @@ let globalCounter = 1;
 const taskButton = document.getElementById('add-task-btn');
 const todoList = document.querySelector('.todo-list');
 const taskInput = document.getElementById('task-input');
+const filterButtons = document.querySelectorAll('.filter-btn');
 
 function createTask() {
     const taskText = taskInput.value.trim();
@@ -111,6 +112,45 @@ function restoreTasks() {
     });
 }
 
+function applyFilter(filter) {
+  const listItems = todoList.querySelectorAll('li');
+  listItems.forEach(item => {
+    const checkBox = item.querySelector('input.task');
+    const taskCompleted = checkBox.checked;
+
+    const isPending = filter === 'Pending' || filter === 'Pendentes';
+    const isCompleted = filter === 'Completed' || filter === 'Concluídas';
+
+    if (isPending && taskCompleted) {
+      item.style.display = 'none';
+    } else if (isCompleted && !taskCompleted) {
+      item.style.display = 'none';
+    } else {
+      item.style.display = '';
+    }
+  });
+}
+
+function filterTasks() {
+    filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.textContent.trim();
+        applyFilter(filter);
+    });
+    });
+}
+
+function clearButton() {
+    const clearBtn = document.getElementById('clear-btn');
+    clearBtn.addEventListener('click', () => {
+        todoList.innerHTML = '';
+        emptyList();
+        saveTasks();
+    });
+}
+
+clearButton();
+filterTasks();
 addTask();
 restoreTasks();
 emptyList();

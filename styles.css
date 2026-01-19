@@ -42,6 +42,7 @@ body {
 }
 
 #task-input {
+    width: 70%;
     padding: 5px;
     border-radius: 5px;
     border: none;
@@ -50,6 +51,7 @@ body {
 
 #add-task-btn {
     background-color: #bd24fa;
+    margin-top: 5px;
     margin-left: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -62,6 +64,25 @@ body {
 
 #add-task-btn:hover {
     background-color: #a31ee0;
+    cursor: pointer;
+}
+
+#clear-btn {
+    background-color: #e5aeff;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#clear-btn:hover {
+    color: white;
+    background-color: #bd24fa;
     cursor: pointer;
 }
 
@@ -109,3 +130,51 @@ ul {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
+
+.filter-conteiner {
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+}
+
+.filter-btn {
+    width: 30% ;
+    display: flex;
+    background-color: #bd24fa;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover {
+    background-color: #a31ee0;
+    cursor: pointer;
+}
+
+img {
+    width: 50px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+@media (max-width: 400px) {
+
+    .filter-conteiner {
+    flex-direction: column;
+    align-items: stretch; /* faz os botões ocuparem toda a largura */
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+}
+
